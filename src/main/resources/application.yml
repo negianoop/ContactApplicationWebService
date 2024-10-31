@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.188.78:5000/docdatabase
+    username: user
+    password: letmein
+  jpa:
+    open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQLInnoDBDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        globally-quoted-identifiers: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format-sql: true
+
+  sql:
+    init:
+      mode: never
+      continue-on-error: false
+      schema-locations: classpath:/data/schema.sql
+      data-locations: classpath:/data/data.sql
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  server:
+    port: 8080
+    error:
+      path: /user/error
+      whitelabel:
+        enabled: false
